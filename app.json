@@ -15,7 +15,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+          "usesAppleSignIn": true
     },
     "android": {
       "adaptiveIcon": {
@@ -24,7 +25,25 @@
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
-    }
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro",
+      "output": "server"
+    },
+    "scheme": "calenduh",
+    "extra": {
+      "eas": {
+        "projectId": "89d07ae8-c30e-4d9d-8300-e4db294bd31d"
+      }
+    },
+    "owner": "matthewgardner",
+    "plugins": [
+      [
+        "expo-router",
+        {
+          "origin": "https://calenduh.app"
+        }
+      ],
+      "expo-secure-store"
+    ]
   }
 }
