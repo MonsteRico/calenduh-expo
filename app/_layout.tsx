@@ -1,11 +1,14 @@
 import { Slot } from "expo-router";
-import { SessionProvider } from "@/components/auth/AuthContext";
-import * as AppleAuthentication from "expo-apple-authentication";
-export default function Root() {
+import { Auth0Provider } from "react-native-auth0";
+import "expo-dev-client";
+export default function Root(props) {
   // Set up the auth context and render our layout inside of it.
   return (
-    <SessionProvider>
+    <Auth0Provider
+      domain={"dev-dufhiacaibuescfm.us.auth0.com"}
+      clientId={"oER0yBq9p898R7kslgShWKjPkwAT0vfK"}
+    >
       <Slot />
-    </SessionProvider>
+    </Auth0Provider>
   );
 }

@@ -16,13 +16,15 @@
     ],
     "ios": {
       "supportsTablet": true,
-          "usesAppleSignIn": true
+      "usesAppleSignIn": true,
+      "bundleIdentifier": "com.matthewgardner.calenduh"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.matthewgardner.calenduh"
     },
     "web": {
       "favicon": "./assets/favicon.png",
@@ -43,7 +45,13 @@
           "origin": "https://calenduh.app"
         }
       ],
-      "expo-secure-store"
+      "expo-secure-store",
+      [
+        "react-native-auth0",
+        {
+          "domain": "dev-dufhiacaibuescfm.us.auth0.com"
+        }
+      ]
     ]
   }
 }
