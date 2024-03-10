@@ -1,9 +1,9 @@
 import { router } from "expo-router";
-import { Button, Text, View, StyleSheet } from "react-native";
+import { Button, Text, View, StyleSheet, Pressable } from "react-native";
 import { useAuth0 } from "react-native-auth0";
 
 export default function Home() {
- const {authorize, clearSession, user, error, isLoading} = useAuth0();
+  const { authorize, clearSession, user, error, isLoading } = useAuth0();
 
   const onLogin = async () => {
     try {
@@ -17,12 +17,16 @@ export default function Home() {
     try {
       await clearSession();
     } catch (e) {
-      console.log('Log out cancelled');
+      console.log("Log out cancelled");
     }
   };
 
   if (isLoading) {
-    return <View style={styles.container}><Text>Loading</Text></View>;
+    return (
+      <View style={styles.container}>
+        <Text>Loading</Text>
+      </View>
+    );
   }
 
   const loggedIn = user !== undefined && user !== null;
@@ -33,13 +37,12 @@ export default function Home() {
       {!loggedIn && <Text>You are not logged in</Text>}
       {error && <Text>{error.message}</Text>}
 
-      <Button
-        onPress={loggedIn ? onLogout : onLogin}
-        title={loggedIn ? 'Log Out' : 'Log In'}
-      />
+      <Pressable onPress={loggedIn ? onLogout : onLogin}>
+        <Text className="text-blue-500">{loggedIn ? "Log Out" : "Log In"}</Text>
+      </Pressable>
     </View>
   );
-};
+}
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -65,7 +68,7 @@ const LoginButton = () => {
 
 const Profile = () => {
   const { user, error } = useAuth0();
-  console.log(user)
+  console.log(user);
 
   return (
     <>
