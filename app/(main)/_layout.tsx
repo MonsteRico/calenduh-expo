@@ -9,9 +9,10 @@ export default function MainLayout(props) {
   // Set up the auth context and render our layout inside of it.
   return (
     <SafeAreaView>
-      <View className="flex flex-row">
-        <Text>Header</Text>
+      <View className="flex !flex-row justify-center">
+        <Text className="text-primary">Header</Text>
         <LogoutButton />
+        <Text className="text-primary">Header</Text>
       </View>
       <Slot />
     </SafeAreaView>
