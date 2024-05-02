@@ -9,6 +9,7 @@ import { DateTime } from "luxon";
 import { DayBeingViewedContext } from "@/hooks/contexts";
 import { useState } from "react";
 import { useToday } from "@/hooks/useToday";
+import { SessionProvider } from "@/components/ctx";
 export default function Root(props) {
   const today = useToday();
 
@@ -18,17 +19,14 @@ export default function Root(props) {
   console.log(colorScheme);
   // Set up the auth context and render our layout inside of it.
   return (
-    <Auth0Provider
-      domain={"dev-dufhiacaibuescfm.us.auth0.com"}
-      clientId={"oER0yBq9p898R7kslgShWKjPkwAT0vfK"}
-    >
-      <DayBeingViewedContext.Provider
-        value={{ value: dayBeingViewed, setValue: setDayBeingViewed }}
-      >
-        <View className={colorScheme + " bg-background text-primary"}>
-          <Slot />
-        </View>
-      </DayBeingViewedContext.Provider>
-    </Auth0Provider>
+      <SessionProvider>
+          <DayBeingViewedContext.Provider
+              value={{ value: dayBeingViewed, setValue: setDayBeingViewed }}
+          >
+              <View className={colorScheme + " bg-background text-primary"}>
+                  <Slot />
+              </View>
+          </DayBeingViewedContext.Provider>
+      </SessionProvider>
   );
 }
